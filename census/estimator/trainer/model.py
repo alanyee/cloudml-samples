@@ -1,7 +1,7 @@
 # Copyright 2016 Google Inc. All Rights Reserved. Licensed under the Apache
 # License, Version 2.0 (the "License"); you may not use this file except in
 # compliance with the License. You may obtain a copy of the License at
-# https://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -163,12 +163,11 @@ def build_estimator(config, embedding_size=8, hidden_units=None):
       hours_per_week,
   ]
 
-  return tf.contrib.learn.DNNLinearCombinedClassifier(
+  return tf.estimator.DNNLinearCombinedClassifier(
       config=config,
       linear_feature_columns=wide_columns,
       dnn_feature_columns=deep_columns,
       dnn_hidden_units=hidden_units or [100, 70, 50, 25],
-      fix_global_step_increment_bug=True
   )
 
 
