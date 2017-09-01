@@ -18,7 +18,7 @@ from __future__ import print_function
 import multiprocessing
 
 import tensorflow as tf
-
+from tensorflow.python.ops import lookup_ops
 
 # Define the format of your input data including unused columns
 CSV_COLUMNS = ['age', 'workclass', 'fnlwgt', 'education', 'education_num',
@@ -182,7 +182,7 @@ def parse_label_column(label_string_tensor):
     and a float32 Tensor representing the value for a regression task.
   """
   # Build a Hash Table inside the graph
-  table = tf.contrib.lookup.index_table_from_tensor(tf.constant(LABELS))
+  table = lookup_ops.index_table_from_tensor(tf.constant(LABELS))
 
   # Use the hash table to convert string labels to ints and one-hot encode
   return table.lookup(label_string_tensor)
